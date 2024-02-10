@@ -41,7 +41,7 @@ def get_info(url):
         raise "Please check the URL!"
 
 
-def download_video(url, video, title, audio=''):
+def download_video(url, video, title, audio: any = ''):
     if audio:
         options = {
             'format': f'{video["format_id"]}+{audio["format_id"]}',
@@ -92,7 +92,14 @@ def main():
         if a_format not in available_audio_formats:
             print("This format is not available, check the data!")
             sys.exit()
-        print(download_video(url, video=available_video_formats[v_format], audio=available_audio_formats[a_format], title=title))
+
+        print(download_video(
+            url,
+            video=available_video_formats[v_format],
+            audio=available_audio_formats[a_format],
+            title=title
+            )
+        )
     print(download_video(url, video=available_video_formats[v_format], title=title))
 
 
